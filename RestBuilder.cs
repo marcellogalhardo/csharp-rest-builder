@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using RestSharp;
 
 namespace Utils.RestBuilder
@@ -6,6 +6,7 @@ namespace Utils.RestBuilder
 	public class RestBuilder
 	{
 		private IRestClient cliente;
+
 		private IRestRequest requisicao;
 
 		private RestBuilder() { }
@@ -15,8 +16,7 @@ namespace Utils.RestBuilder
 			RestBuilder builder = new RestBuilder();
 			builder.cliente = new RestClient();
 			builder.requisicao = new RestRequest();
-            builder.requisicao.JsonSerializer.ContentType = "application/json; charset=utf-8";
-
+			builder.requisicao.JsonSerializer.ContentType = "application/json; charset=utf-8";
 			return builder;
 		}
 
@@ -71,11 +71,11 @@ namespace Utils.RestBuilder
 			return this;
 		}
 
-        public RestBuilder ComParametro(string nome, object valor, ParameterType tipo)
-        {
-            this.requisicao.AddParameter(nome, valor, tipo);
-            return this;
-        }
+		public RestBuilder ComParametro(string nome, object valor, ParameterType tipo)
+		{
+			this.requisicao.AddParameter(nome, valor, tipo);
+			return this;
+		}
 
 		public RestBuilder ComSegmentoNaUri(string nome, string valor)
 		{
@@ -89,11 +89,10 @@ namespace Utils.RestBuilder
 			return this;
 		}
 
-        public RestBuilder ComCorpoJson(object corpo)
-        {
-            this.requisicao.AddJsonBody(corpo);
-            return this;
-        }
+		public RestBuilder ComCorpoJson(object corpo)
+		{
+			this.requisicao.AddJsonBody(corpo);
+			return this;
+		}
 	}
 }
-
